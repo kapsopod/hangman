@@ -1,7 +1,6 @@
 <?php
 	$countriesArray = [];	//holds each line of the text file in each cell
 
-	//   *** test an empty file ***
 	function populateArrayFromFile($countries_file/*, $local_countries_array*/){
 		$local_countries_array = [];
 		$file = new SplFileObject($countries_file);	//file to read the countries from
@@ -23,11 +22,6 @@
 		return $answer;
 	}
 
-/*
-	Function Name: hideCharacters()
-	Parameters: Word whose characters are to be hidden.
-	Return values: Returns a string of characters.
-*/
 	function hideCharacters($answer){
 		$hidden = $answer;
 		foreach ($hidden as &$value)
@@ -37,11 +31,7 @@
 		
 		return $hidden;
 	}
-/*
-	Function Name: checkAndReplace()
-	Parameters: UserInput, Hidden string and the answer.
-	Return values: Returns a character array.
-*/
+
 	function checkAndReplace($userInput, $hidden, $answer){
 		$wrongGuess = true;
 		$userInput = strtoupper($userInput);
@@ -60,27 +50,21 @@
 		return $hidden;
 	}
 
-
-/*
-	Function Name: checkGameOver()
-	Parameters: Maximum attempts, no. of attempts made by user, Hidden string and the answer.
-	Return values: Returns a character array.
-*/
     function checkGameOver($MAX_ATTEMPTS,$userAttempts, $answer, $hidden){
 		if ($userAttempts >= $MAX_ATTEMPTS){
 			echo '<img src="pics/0.jpg"><br />';
-			echo "Game Over. The correct word was ";
+			echo "You lost. The correct word was ";
 			foreach ($answer as $letter)
 				echo $letter;
-			echo '<br /><form action = "" method = "post"><input type = "submit" name = "newWord" value = "Try another Word" autofocus/></form><br />';
+			echo '<br /><br /><form action = "" method = "post"><input type = "submit" name = "newWord" value = "Try another Word" autofocus/></form><br />';
 			die();
 		}
 		if (count(array_diff($hidden, $answer)) == 0){
 			echo '<img src="pics/'.($MAX_ATTEMPTS - $_SESSION['attempts']).'.jpg"><br />';
-			echo "Game Over. The correct word is indeed ";
+			echo "You won. The correct word was indeed ";
 			foreach ($answer as $letter)
 				echo $letter;
-			echo '<br /><form action = "" method = "post"><input type = "submit" name = "newWord" value = "Try another Word" autofocus/></form><br />';
+			echo '<br /><br /><form action = "" method = "post"><input type = "submit" name = "newWord" value = "Try another Word" autofocus/></form><br />';
 			die();
 		}
 	}

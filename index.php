@@ -2,14 +2,7 @@
 	session_start();
 ?>
 
-<!--
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
--->
 <head>
-	<!--
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	-->
 	<link rel="icon" type="image/png" href="pics/favicon.ico">
 	<title>Hangman</title>
 </head>
@@ -29,18 +22,11 @@
 			$answer = fetchWordArray($WORDLISTFILE);
 
 			$_SESSION['answer'] = $answer;
-			
-			//echo '$answer is ';	//DAK
-			//foreach($answer as $value)	//DAK
-			//	echo $value;	//DAK
 
 			$_SESSION['hidden'] = hideCharacters($answer);
-			//echo "_SESSION['hidden'] is ";	//DAK
-			//foreach($_SESSION['hidden'] as $value2)	//DAK
-			//	echo $value2;	//DAK
 
 			echo 'Attempts remaining: '.($MAX_ATTEMPTS - $_SESSION['attempts']).'<br />';
-			echo 'Letters guessed wrong: <br />';
+			echo 'Letters guessed wrong: <br /><br />';
 		}
 		else{
 			if (isset ($_POST['userInput'])){
@@ -50,7 +36,7 @@
 				echo '<img src="pics/'.($MAX_ATTEMPTS - $_SESSION['attempts']).'.jpg"><br />';
 			}
 			echo 'Attempts remaining: '.($MAX_ATTEMPTS - $_SESSION['attempts'])."<br />";
-			echo 'Letters guessed wrong: '.$_SESSION['wrong_guesses']."<br />";
+			echo 'Letters guessed wrong: '.$_SESSION['wrong_guesses']."<br /><br />";
 		}
 		$hidden = $_SESSION['hidden'];
 		foreach ($hidden as $char){
@@ -58,7 +44,7 @@
 				$char = "&nbsp;";
 			echo $char."&nbsp;";
 		}
-		echo '<br />';
+		echo '<br /><br />';
 	?>
 
 	<script type="application/javascript">
