@@ -1,10 +1,10 @@
 # hangman
 Procedural PHP hangman game that reads countries from a file
 
-#Assumptions
+## Assumptions
 The environment you will try to run the program by following the steps below is linux and your web server (if you don't have docker set up) has PHP set up.
 
-#TO RUN
+## TO RUN
 - Download the project from github as a zip file.
 - Once downloaded unzip.
 - You should end up with a "hangman-main" directory.
