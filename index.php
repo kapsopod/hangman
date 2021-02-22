@@ -11,7 +11,7 @@
 	<?php
         include __DIR__ . '/src/config.php';
         include __DIR__ . '/src/functions.php';
-		
+        
 		if (isset($_POST['newWord']))
 			unset($_SESSION['answer']);
 		if (!isset($_SESSION['answer'])){	//new game
